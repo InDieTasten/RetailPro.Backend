@@ -41,7 +41,13 @@ namespace RetailPro.Backend
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                  name: "areas",
+                  template: "{area:exists}/{controller=Me}/{action=Get}/{id?}"
+                );
+            });
         }
     }
 }
